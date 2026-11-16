@@ -1,0 +1,39 @@
+{
+  "name": "prices",
+  "image": "python:3.13-slim",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": false,
+      "installOhMyZsh": false,
+      "installOhMyZshConfig": false,
+      "upgradePackages": false,
+      "username": "none"
+    },
+    "ghcr.io/devcontainers/features/copilot-cli:1": {}
+  },
+  "postCreateCommand": "pip install --no-cache-dir uv",
+  "postStartCommand": "uv sync",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot-chat",
+        "ms-python.python"
+      ],
+      "settings": {
+        "markdown.preview.security.level": "allow-insecure-local-content",
+        "extensions.ignoreRecommendations": true,
+        "git.addAICoAuthor": "chatAndAgent",
+        "workbench.secondarySideBar.defaultVisibility": "hidden",
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "git.enableSmartCommit": true,
+        "git.confirmSync": false,
+        "git.postCommitCommand": "sync",
+        "git.autofetch": true,
+        "git.useEditorAsCommitInput": false,
+        "git.rebaseWhenSync": true,
+        "githubPullRequests.createOnPublishBranch": "never",
+        "terminal.integrated.ignoreProcessKeybindingWarnings": true
+      }
+    }
+  }
+}
